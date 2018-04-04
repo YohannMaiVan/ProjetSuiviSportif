@@ -1,15 +1,14 @@
 <?php
 
-require ('model/config.php');
-require "model/model.php";
-require "model/user.php";
+require __DIR__ .'/model/workout.php';
 
+$result = workout::fetchWorkouts();
+/*
 $fetchWorkouts = new workout();
 
 $result = $fetchWorkouts->fetchWorkouts();
-var_dump($result);
+/*
+workout::fetchWorkouts();*/
 /*$get_Users = new user();
 $result_user = $get_Users->getUser();*/
-require "view/index.html.php";
-
-?>
+require __DIR__ .'/view/index.html.php';

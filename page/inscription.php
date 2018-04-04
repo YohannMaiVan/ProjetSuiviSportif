@@ -1,17 +1,5 @@
 <?php
-try {
-
-  $pdo = new PDO(
-    "mysql:dbname=outil_suivi;host=localhost;charset=utf8", 'root', 'simplonco');
-
-} catch (PDOException $e) {
-
-
-  echo 'Connection failed : ' . $e->getMessage();
-
-  $pdo = null;
-}
-require ('../view/inscription.html.php');
+require __DIR__ .'/../model/user.php';
 
 if (isset($_POST['form_inscription']))
 {
@@ -29,9 +17,8 @@ if (isset($_POST['form_inscription']))
         {
             if ($password==$password2)
             {
-                $insertuser = $pdo->prepare('INSERT INTO users (name, email, password) VALUES (?, ?, ?)');
-                $insertuser->execute(array($name, $mail, $password));
-                $erreur = "Votre compte a bien été crée";
+              user::insert_user($name, $mail, $password);
+              $erreur = "Votre compte a bien été crée";
 
             }
             else
@@ -60,3 +47,5 @@ if(isset ($erreur))
 {
   echo $erreur;
 }
+
+require ('../view/inscription.html.php');

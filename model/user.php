@@ -1,13 +1,14 @@
 <?php
+class user {
 
-function coDatabase() {
+public static function coDatabase() {
 	try {
 
 
-	  require 'config.php';
+	  require __DIR__ .'/config.php';
 
 	  $pdo = new PDO(
-	    "mysql:dbname=outil_suivi;host=localhost;charset=utf8", 'root', 'simplonco'
+	    "mysql:dbname=$dbname;host=$host;charset=utf8", $user, $password
 	  );
 
 	} catch (PDOException $e) {
@@ -21,10 +22,10 @@ function coDatabase() {
 	return $pdo;
 }
 
-function createStatement($sql) {
+public static function createStatement($sql) {
     $pdo_statement = null;
 
-    $pdo = coDatabase();
+    $pdo = self::coDatabase();
 
     if ($pdo)
     try {
@@ -36,20 +37,18 @@ function createStatement($sql) {
 }
 // WHERE id="'.$workouts['user_id'].'"'
 
-class user {
+		public static function insert_user($name, $mail, $password)
+		{
+			  try {
+			$pdo_statement = self::createStatement('INSERT INTO users (name, email, password) VALUES (:name, :mail, :password)');
 
-    public function getUser()
-    {
-      try {
+			$pdo_statement->bindparam(':name', $name) &&
+			$pdo_statement->bindparam(':mail', $mail) &&
+			$pdo_statement->bindparam(':password', $password) &&
+			$pdo_statement->execute();
+		} catch (PDOException $e) {
+		}
 
-            $statement = createStatement('SELECT * FROM workouts INNER JOIN users WHERE workouts.user_id = users.id');
-
-            $statement->execute();
-
-            $result_user = $statement->fetchAll();
-      } catch (PDOException $e) {
-
-      }
-      return $result_user;
-    }
+		return $pdo_statement;
+		}
   }

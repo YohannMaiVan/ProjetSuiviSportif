@@ -3,7 +3,7 @@
 <body>
   <div align="center">
     <h1>Inscris toi vite!</h1>
-    <form action="../controller/inscription2.php" method="post">
+    <form action="" method="post">
       <table>
       <tr>
         <td><label>Nom</label></td>

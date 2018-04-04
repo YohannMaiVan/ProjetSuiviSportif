@@ -6,6 +6,13 @@
   </head>
   <body>
 
+        <form action="page/inscription.php">
+          <input type="submit" value="S'inscrire">
+        </form>
+        <form action="page/connexion.php">
+          <input type="submit" value="Se connecter">
+        </form>
+
     <table>
     <thead>
         <tr>
@@ -68,14 +75,7 @@
 }
 
         ?>
-
-    <form action="view/inscription.html.php">
-      <input type="submit" value="S'inscrire">
-    </form>
-    <form action="./controller/connexion.php">
-      <input type="submit" value="Se connecter">
-    </form>
-
+</table>
 
   </body>
 </html>
