@@ -33,4 +33,5 @@ public static function fetchWorkouts() {
     }
     return $result;
   }
+
 }

@@ -1,14 +1,11 @@
 <?php
 session_start();
 
-require ('../model/config.php');
+require __DIR__ .'/../model/user.php';
 
 if(isset($_GET['id']) AND $_GET['id'] > 0)
 {
-    $getid = intval($_GET['id']);
-    $requser = $pdo->prepare('SELECT * FROM users where id = ?');
-    $requser->execute(array($getid));
-    $userinfo = $requser->fetch();
+  $userinfo = user::profil_user();
 }
 require ('../view/profil.html.php');
 ?>

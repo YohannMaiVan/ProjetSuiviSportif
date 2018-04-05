@@ -1,19 +1,17 @@
 <?php
 session_start();
 ob_start();
-require ('../model/config.php');
-require ('../view/connexion.html.php');
+require ('../model/user.php');
 
 if(isset($_POST['formconnexion']))
 {
     if(!empty($_POST['mailconnect']) AND !empty($_POST['passwordconnect']))
     {
-        $mailconnect = htmlspecialchars($_POST['mailconnect']);
+      /*  $mailconnect = htmlspecialchars($_POST['mailconnect']);
         $passwordconnect = sha1($_POST['passwordconnect']);
-
+*/
         // Je vérifie si L'user existe bien dans la bdd
-        $requser = $pdo->prepare("SELECT * FROM users WHERE email =? AND password =?");
-        $requser->execute(array($mailconnect, $passwordconnect));
+        $requser = user::connect_user();
         // Cette fonction va compter le nombre de rangées qui existe ac les infos qu'a saisi l'utilisateur
         $userexist = $requser->rowCount();
         if ($userexist == 1)
@@ -45,3 +43,4 @@ if(isset ($erreur))
   echo $erreur;
 }
 ob_end_flush();
+require ('../view/connexion.html.php');

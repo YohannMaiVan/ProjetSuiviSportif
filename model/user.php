@@ -46,9 +46,28 @@ public static function createStatement($sql) {
 			$pdo_statement->bindparam(':mail', $mail) &&
 			$pdo_statement->bindparam(':password', $password) &&
 			$pdo_statement->execute();
-		} catch (PDOException $e) {
+		} catch (PDOException $e) { $e->getMessage();
 		}
 
 		return $pdo_statement;
+		}
+
+		public static function profil_user()
+		{
+
+			$getid = intval($_GET['id']);
+			$requser = self::createStatement('SELECT * FROM users where id = ?');
+			$requser->execute(array($getid));
+			$userinfo = $requser->fetch();
+			return $userinfo;
+		}
+
+		public static function connect_user()
+		{
+			$mailconnect = htmlspecialchars($_POST['mailconnect']);
+			$passwordconnect = sha1($_POST['passwordconnect']);
+			$requser = self::createStatement("SELECT * FROM users WHERE email =? AND password =?");
+			$requser->execute(array($mailconnect, $passwordconnect));
+			return $requser;
 		}
   }
