@@ -34,4 +34,24 @@ public static function fetchWorkouts() {
     return $result;
   }
 
+public static function createWorkout() {
+    try {
+      $get_user = $_SESSION['id'];
+      $my_workout_title = htmlspecialchars($_POST['my_workout_title']);
+      $my_workout_content = htmlspecialchars($_POST['my_workout_content']);
+
+        $pdo_statement = self::prepareStatement('INSERT INTO workouts (title, content, created_at, user_id)
+        VALUES (:title, :content, NOW(), :user_id)');
+
+            $pdo_statement->bindParam(':title', $my_workout_title) &&
+            $pdo_statement->bindParam(':content', $my_workout_content) &&
+            $pdo_statement->bindParam(':user_id', $get_user) &&
+            $pdo_statement->execute();
+      //on passe nos paramètres dans un tableau
+    } catch (PDOException $e) { $e->getMessage();
+    }
+    return $pdo_statement;
+
+}
+
 }
