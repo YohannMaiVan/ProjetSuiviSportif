@@ -12,6 +12,7 @@ public static function initDatabase() {
 	}
 	return $pdo;
 }
+
 public static function prepareStatement($sql) {
     $pdo_statement = null;
     $pdo = self::initDatabase();
@@ -52,6 +53,41 @@ public static function createWorkout() {
     }
     return $pdo_statement;
 
+  }
+
+public static function editWorkout($id, $title, $content)
+{
+    try {
+      $edit_workout_title = htmlspecialchars($_POST['edit_title_workout']);
+      $edit_workout_content = htmlspecialchars($_POST['edit_content_workout']);
+
+      $pdo_statement = self::prepareStatement('UPDATE workouts SET title = :title, content = :content WHERE id = :id');
+      $pdo_statement->bindParam(":title", $edit_workout_title);
+      $pdo_statement->bindParam(":content", $edit_workout_content);
+      $pdo_statement->bindParam(":id", $id);
+      $pdo_statement->execute();
+        }
+    catch (PDOException $e) {
+      echo "erreur : ". $e->getMessage();
+    }
+    return $pdo_statement;
 }
 
+public static function selectWorkout($id, $title)
+{
+  try {
+    $edit_workout_title = htmlspecialchars($_POST['edit_title_workout']);
+    $edit_workout_content = htmlspecialchars($_POST['edit_content_workout']);
+
+    $pdo_statement = self::prepareStatement('UPDATE workouts SET title = :title, content = :content WHERE id = :id');
+    $pdo_statement->bindParam(":title", $edit_workout_title);
+    $pdo_statement->bindParam(":content", $edit_workout_content);
+    $pdo_statement->bindParam(":id", $id);
+    $pdo_statement->execute();
+      }
+  catch (PDOException $e) {
+    echo "erreur : ". $e->getMessage();
+  }
+  return $pdo_statement;
+}
 }

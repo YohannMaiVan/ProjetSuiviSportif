@@ -1,0 +1,83 @@
+html {
+  background: url('images/boxingwallpaper.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  cursor: pointer;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+/*  background: url('images/navbackground.jpg');
+  background-size: cover;
+  background-position: center; */
+  background: rgba(0, 0, 0, 1);
+
+}
+
+.navbar > .logo {
+  margin-top: 0.2em;
+  margin-left: 0.2em;
+}
+
+.navbar > .auth > a {
+  padding: 12px 26px 12px 26px;
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  margin-right: 0.2em;
+}
+
+.navbar > .auth > a:hover {
+  background: rgba(0, 0, 0, 1);
+  color: grey;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 1);
+  margin-top: 2em;
+}
+
+.footer > .footer_plus {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.footer > .footer_plus > a {
+  text-decoration: none;
+  color: white;
+}
+
+.footer > .footer_plus > .back_top_button {
+  padding-left: 3px;
+  padding-right: 3px;
+  border: 2px solid white;
+  border-radius: 40px;
+}
+
+.footer > .footer_plus > a:hover {
+  color: grey;
+  -webkit-filter: brightness(150%);
+}
+
+.stylebar_footer {
+  border: 1px solid white;
+  width: 30em;
+}
+
+.footer_rights {
+  color: white;
+}

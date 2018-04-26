@@ -23,7 +23,7 @@ if(isset($_POST['submit_my_workout']))
       }
       else
       {
-        $message="Veuillez remplir tous les champs";
+        $message = "Veuillez remplir tous les champs";
       }
   }
 }

@@ -1,0 +1,18 @@
+.browse_workouts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.sticker_workout {
+  background: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  width: 13em;
+  height: 18em;
+  margin: 2em 2em 0em 2em;
+}
+
+.sticker_workout > img {
+  margin-top: 1.4em;
+
+}
